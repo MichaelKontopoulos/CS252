@@ -119,7 +119,7 @@ public class PayDayCards extends JFrame{
     public void showMailCard(int i){
        Object[] options = {mailCards[i][3]};
         
-        Image image = new ImageIcon("input/images/"+mailCards[i][5]).getImage();
+        Image image = new ImageIcon("resources/images"+mailCards[i][5]).getImage();
         image = image.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
         System.out.println("Type: "+ mailCards[i][0]+"\nTypeEn: "+mailCards[i][1]+
                 "\nMessage:"+mailCards[i][2]+"\nChoice: "+mailCards[i][3]+"\nEuro:"+Integer.parseInt(mailCards[i][4]));
@@ -141,7 +141,7 @@ public class PayDayCards extends JFrame{
     public void showDealCard(int i){
         Object[] options = {dealCards[i][6],dealCards[i][7]};
 
-        Image image = new ImageIcon("input/images/"+dealCards[i][5]).getImage();
+        Image image = new ImageIcon("resources/images"+dealCards[i][5]).getImage();
         image = image.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
         System.out.println("Type: "+ dealCards[i][0]+"\nTypeEn: "+dealCards[i][1]+
                 "\nMessage: "+dealCards[i][2]+"\nCost:"+Integer.parseInt(dealCards[i][3])+
@@ -197,6 +197,7 @@ public class PayDayCards extends JFrame{
 //       //Uncomment For Greeklish
         pdv.readFile("resources/dealCards_greeklish.csv","Deal");
          pdv.readFile("resources/mailCards_greeklish.csv","Mail");
+         //pdv.
     }
     
     
