@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -185,15 +186,17 @@ public class PayDayCards extends JFrame{
      *
      * @param args args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+       FileOutputStream file= new FileOutputStream("myfile");
+       System.getProperty("user.dir");
        PayDayCards pdv=new PayDayCards();
        pdv.setVisible(true);
-       pdv.readFile("input/dealCards.csv","Deal");
-       pdv.readFile("input/mailCards.csv","Mail");
-       
-       //Uncomment For Greeklish
-        //pdv.readFile("input/dealCards_greeklish.csv","Deal");
-        // pdv.readFile("input/mailCards_greeklish.csv","Mail");
+      //pdv.readFile("src/resources/dealCards.csv","Deal");
+//       pdv.readFile("input/mailCards.csv","Mail");
+//       
+//       //Uncomment For Greeklish
+        pdv.readFile("resources/dealCards_greeklish.csv","Deal");
+         pdv.readFile("resources/mailCards_greeklish.csv","Mail");
     }
     
     
