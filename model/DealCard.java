@@ -41,7 +41,7 @@ public class DealCard implements Card {
      * @param diceNumber Number of Dice
      */
         @Override
-    public void performAction(Player p, int diceNumber) {
+    public void performAction(Player p, int diceNumber,Player enemy) {
         if (choiceOfDealCard==0){
             if(p.getMoney()<this.cost){
                 p.setLoan(p.getLoan()+this.cost);

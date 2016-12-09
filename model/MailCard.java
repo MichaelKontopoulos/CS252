@@ -38,11 +38,32 @@ public class MailCard implements Card  {
       
     
    @Override
-    public void performAction(Player p, int diceNumber) {
-        if(("Charity".equals(typeEn))||("PayTheNeighbor".equals(typeEn))||("Bill".equals(typeEn)))
-                p.setMoney(p.getMoney()-this.amount);
-        else if("MadMoney".equals(typeEn))
-                p.setMoney(p.getMoney()+this.amount);
+    public void performAction(Player p, int diceNumber,Player enemy) {
+        if("Charity".equals(typeEn)){
+            if (p.getMoney()<this.amount){
+                p.setLoan(p.getLoan()+amount);
+                p.setMoney(p.getMoney()+amount);
+            }
+            p.setMoney(p.getMoney()-this.amount);
+        }
+        if("Bill".equals(typeEn)){
+            p.mailCards.add(this);
+        }
+        if("PayTheNeighbor".equals(typeEn)){
+            if (p.getMoney()<this.amount){
+                p.setLoan(p.getLoan()+amount);
+            }
+            p.setMoney(p.getMoney()-this.amount);
+            enemy.setMoney(enemy.getMoney()+amount);
+        }
+        if("MadMoney".equals(typeEn)){
+            if (enemy.getMoney()<this.amount){
+                enemy.setLoan(enemy.getLoan()+amount);
+                enemy.setMoney(enemy.getMoney()+amount);
+            }
+            enemy.setMoney(enemy.getMoney()-amount);
+            p.setMoney(p.getMoney()+this.amount);
+        }
         //else go to deal/buyers position
     }
 

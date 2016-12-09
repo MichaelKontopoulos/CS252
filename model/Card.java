@@ -16,5 +16,5 @@ public interface Card {
      * @param p Player
      * @param diceNumber Number of Dice
      */
-    public void performAction(Player p, int diceNumber);
+    public void performAction(Player p, int diceNumber,Player enemy);
 }
