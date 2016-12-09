@@ -6,6 +6,7 @@
 
 package view;
 
+import controller.controller;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
@@ -41,8 +42,8 @@ public class PayDayCards extends JFrame{
      */
     public  ClassLoader cldr;
     int mailCardCount=0,dealCardCount=0;
-    String[][] mailCards=new String[48][4];
-    String[][] dealCards=new String[20][8];
+    public String[][] mailCards=new String[48][4];
+    public String[][] dealCards=new String[20][8];
 
     /**
      *
@@ -156,6 +157,11 @@ public class PayDayCards extends JFrame{
         new ImageIcon(image),
         options,
         options[0]);
+        if (n==0)
+            choice=0;
+        else
+            choice=1;
+        
     }
     
   
@@ -176,8 +182,12 @@ public class PayDayCards extends JFrame{
 				if (dealCardCount == 20) {
 					dealCardCount = 0;
 				}
+                                
 				//int x=new Random().nextInt(20); //for Random
+                                
 				showDealCard(x);
+                                System.out.println(choice);
+                                
 			}
 		}
 	}
@@ -186,18 +196,21 @@ public class PayDayCards extends JFrame{
      *
      * @param args args
      */
+    int choice;
     public static void main(String[] args) throws FileNotFoundException {
-       FileOutputStream file= new FileOutputStream("myfile");
-       System.getProperty("user.dir");
        PayDayCards pdv=new PayDayCards();
        pdv.setVisible(true);
       //pdv.readFile("src/resources/dealCards.csv","Deal");
 //       pdv.readFile("input/mailCards.csv","Mail");
 //       
 //       //Uncomment For Greeklish
-        pdv.readFile("resources/dealCards_greeklish.csv","Deal");
+           pdv.readFile("resources/dealCards_greeklish.csv","Deal");
          pdv.readFile("resources/mailCards_greeklish.csv","Mail");
-         //pdv.
+         controller newController=new controller(1);
+         newController.initialize_Cards(pdv.mailCards,pdv.dealCards);
+         newController.printarraylist();
+         
+        
     }
     
     

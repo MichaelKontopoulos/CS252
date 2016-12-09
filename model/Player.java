@@ -63,6 +63,27 @@ public class Player {
         return this.loans;
     }
     
+    public void setMoney(int Money){
+        this.money=Money;
+    }
+    
+    public int getMoney(){
+        return this.money;
+    }
+    
+    public int getDebts(){
+        return this.debts;
+    }
+    
+    public void setDebts(int Debts){
+        this.debts=Debts;
+    }
+    public void setPosition(int Position){
+        this.positionAtBoard=Position;
+    }
+    public int getPosition(){
+        return this.positionAtBoard;
+    }
     /**
      * Set a name to player 
      * @param newName Player Name

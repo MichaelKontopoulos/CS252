@@ -6,6 +6,8 @@
 package controller;
 
 import java.util.ArrayList;
+import model.DealCard;
+import model.MailCard;
 import model.Player;
 import model.Position;
 import model.Turn;
@@ -23,7 +25,9 @@ public class controller {
     Position [] array2month; //for the 2nd  month if decided
     Position [] array3month; //for the 3rd  month if decided
     private int jackpot; // money AT the jackpot
-
+    ArrayList <DealCard> dealCards;
+    ArrayList <MailCard> mailCards;
+    
     /**
      * constructor: Constructs a new controller and sets the game as 
      * eligible to start .
@@ -34,9 +38,12 @@ public class controller {
      * @param months months to be decided
      */
     public controller(int months){
-        P1=new Player("p1");
-        P2=new Player("p2");
+       // P1=new Player("p1");
+       // P2=new Player("p2");
         this.months=months;
+        this.dealCards=new ArrayList <DealCard>();
+        this.mailCards=new ArrayList <MailCard>();
+        
     }
     /**INITIALIZES 31 POSITIONS RANDOMLY AND 1 JACKPOT,LAST POSITION IS PAYDAY,INITIALIZES 4 1-MAIL POSITIONS,4 2-MAIL POSITIONS
     * 5 DEAL POSITIONS,2 SWEEPSTAKES,3 LOTTERY,2 RADIO,6 BUYER,2 FAMILY CASINO NIGHT,2 YARD SALE.
@@ -47,10 +54,27 @@ public class controller {
     }
     /**INITIALIZES 48 MAIL CARDS AND 20 DEAL CARDS
      */
-    public void initialize_Cards()
+    public void initialize_Cards(String S[][],String L[][])
     {
-       
+        for(int i=0;i<48;i++){
+                      MailCard NewMailCard=new MailCard(S[i][0],S[i][1],S[i][2],S[i][3],Integer.parseInt(S[i][4]));
+                      this.mailCards.add(NewMailCard);
+        }
+        for(int i=0;i<20;i++){
+            DealCard newDealCard= new DealCard(L[i][0],L[i][1],L[i][2],Integer.parseInt(L[i][3]),Integer.parseInt(L[i][4]),L[i][5],L[i][6]);
+            this.dealCards.add(newDealCard);
+            
+        }
+      
     }
+    
+    public void printarraylist(){
+        for (int i=0;i<this.mailCards.size();i++){
+            System.out.println(this.mailCards.get(i).type +" "+ this.mailCards.get(i).typeEn +" "+ this.mailCards.get(i).msg +" "+ this.mailCards.get(i).amount +" "+
+                    this.mailCards.get(i).choice);
+        }
+    }
+    
     /**RANDOMLY SETS FIRST PLAYER
      * @param p1 Player one
      * @param p2 Player two

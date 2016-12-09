@@ -10,23 +10,38 @@ package model;
  * @author Michael
  */
 public class MailCard implements Card  {
-    
+   public String type;
+   public String typeEn;
+   public String msg;
+   public int amount;
+   public String choice;
     /**
      *
      */
-    public MailCard(){
-        
+    public MailCard(String Type,String TypeEn,String Message,String Choice,int Euro){
+        this.type=Type;
+        this.typeEn=TypeEn;
+        this.msg=Message;
+        this.amount=Euro;
+        this.choice=Choice;
     }
     /**
      * Depending on the dice and what kind of Mail card it is,another action is performed.
      * @param p Player
      * @param diceNumber Number of Dice
      */
-    @Override
+      
+    
+   @Override
     public void performAction(Player p, int diceNumber) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(("Charity".equals(typeEn))||("PayTheNeighbor".equals(typeEn))||("Bill".equals(typeEn)))
+                p.setMoney(p.getMoney()-this.amount);
+        else if("MadMoney".equals(typeEn))
+                p.setMoney(p.getMoney()+this.amount);
+          
+       //else if("MadMoney")
     }
-    
-    
-    
+
+   
+     
 }

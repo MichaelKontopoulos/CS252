@@ -10,13 +10,27 @@ package model;
  * @author Michael
  */
 public class DealCard implements Card {
-    int tobuy;
-    int tosell;
+        String type;
+        String typeEn;
+        String msg;
+        int cost;
+        int value;
+        String Choice1;
+        String Choice2;
+       
 
     /**
      *
      */
-    public DealCard(){
+    public DealCard(String Type,String TypeEn,String Message,int Cost,int Value,String Choice1,String Choice2){
+        this.type=Type;
+        this.typeEn=TypeEn;
+        this.msg=Message;
+        this.cost=Cost;
+        this.value=Value;
+        this.Choice1=Choice1;
+        this.Choice2=Choice2;
+        
         
     }
     /**
@@ -24,9 +38,13 @@ public class DealCard implements Card {
      * @param p Player
      * @param diceNumber Number of Dice
      */
-    @Override
+        @Override
     public void performAction(Player p, int diceNumber) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(choice==0)
+            
+        //else if (if choice 2 ignore
+        
+        
     }
     
 }
