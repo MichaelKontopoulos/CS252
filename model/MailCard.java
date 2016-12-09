@@ -17,6 +17,11 @@ public class MailCard implements Card  {
    public String choice;
     /**
      *
+     * @param Type
+     * @param TypeEn
+     * @param Message
+     * @param Choice
+     * @param Euro
      */
     public MailCard(String Type,String TypeEn,String Message,String Choice,int Euro){
         this.type=Type;
@@ -38,8 +43,7 @@ public class MailCard implements Card  {
                 p.setMoney(p.getMoney()-this.amount);
         else if("MadMoney".equals(typeEn))
                 p.setMoney(p.getMoney()+this.amount);
-          
-       //else if("MadMoney")
+        //else go to deal/buyers position
     }
 
    

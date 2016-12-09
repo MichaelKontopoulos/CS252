@@ -5,6 +5,8 @@
  */
 package model;
 
+import static view.PayDayCards.choiceOfDealCard;
+
 /**
  *
  * @author Michael
@@ -40,11 +42,12 @@ public class DealCard implements Card {
      */
         @Override
     public void performAction(Player p, int diceNumber) {
-        if(choice==0)
-            
-        //else if (if choice 2 ignore
-        
-        
+        if (choiceOfDealCard==0){
+            if(p.getMoney()<this.cost){
+                p.setLoan(p.getLoan()+this.cost);
+            }
+            p.setMoney(p.getMoney()-this.cost);//TODO probably more
+        }
     }
     
 }

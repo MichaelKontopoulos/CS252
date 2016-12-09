@@ -158,9 +158,9 @@ public class PayDayCards extends JFrame{
         options,
         options[0]);
         if (n==0)
-            choice=0;
+            choiceOfDealCard=0;
         else
-            choice=1;
+            choiceOfDealCard=1;
         
     }
     
@@ -186,7 +186,7 @@ public class PayDayCards extends JFrame{
 				//int x=new Random().nextInt(20); //for Random
                                 
 				showDealCard(x);
-                                System.out.println(choice);
+                                System.out.println(choiceOfDealCard);
                                 
 			}
 		}
@@ -196,7 +196,8 @@ public class PayDayCards extends JFrame{
      *
      * @param args args
      */
-    int choice;
+    public static int choiceOfDealCard;
+    
     public static void main(String[] args) throws FileNotFoundException {
        PayDayCards pdv=new PayDayCards();
        pdv.setVisible(true);

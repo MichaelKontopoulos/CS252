@@ -81,6 +81,10 @@ public class Player {
     public void setPosition(int Position){
         this.positionAtBoard=Position;
     }
+    public void setLoan(int loan){
+        this.loans=loan;
+    }
+    
     public int getPosition(){
         return this.positionAtBoard;
     }
