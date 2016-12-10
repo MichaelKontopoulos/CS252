@@ -11,14 +11,18 @@ package model;
  */
 public class CardPosition extends Position {
 
+    public CardPosition(String Type) {
+        super(Type);
+    }
+
     /**
      *Performing an action depending on the dice number and the current player
      * @param p Player
      * @param diceNumber Number of Dice
      */
-    @Override
-    public void performAction(Player p, int diceNumber) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    @Override
+//    public void performAction(Player p, int diceNumber) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
     
 }

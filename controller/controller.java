@@ -5,7 +5,11 @@
  */
 package controller;
 
+import static java.lang.Math.random;
+import static java.lang.StrictMath.random;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import model.DealCard;
 import model.MailCard;
 import model.Player;
@@ -21,12 +25,14 @@ public class controller {
     int months;
     Player P1,P2;
     Turn turn=new Turn();
-    Position [] array1month; // for the 1st month
+    Position [] array1month;// for the 1st month
     Position [] array2month; //for the 2nd  month if decided
     Position [] array3month; //for the 3rd  month if decided
     private int jackpot; // money AT the jackpot
     ArrayList <DealCard> dealCards;
     ArrayList <MailCard> mailCards;
+    ArrayList <DealCard> dealCardsOFFStack;
+    ArrayList <MailCard> mailCardsOFFStack;
     
     /**
      * constructor: Constructs a new controller and sets the game as 
@@ -43,6 +49,9 @@ public class controller {
         this.months=months;
         this.dealCards=new ArrayList <DealCard>();
         this.mailCards=new ArrayList <MailCard>();
+        this.array1month=new Position[31];
+        this.dealCardsOFFStack=new ArrayList <DealCard>();
+        this.mailCardsOFFStack=new ArrayList <MailCard>();
         
     }
     /**INITIALIZES 31 POSITIONS RANDOMLY AND 1 JACKPOT,LAST POSITION IS PAYDAY,INITIALIZES 4 1-MAIL POSITIONS,4 2-MAIL POSITIONS
@@ -50,7 +59,65 @@ public class controller {
     */
     public void initialize_Board()
     {
+       for (int i=0;i<4;i++){
+           Position newPosition=new Position("MailPositionDraw1");
+
+            this.array1month[i]=newPosition;
+       }
+       for (int i=4;i<8;i++){
+           Position newPosition=new Position("MailPositionDraw2");
+           
+            this.array1month[i]=newPosition;
+       }
+       for (int i=8;i<13;i++){
+            Position newPosition=new Position("DealPosition");
+           
+            this.array1month[i]=newPosition;
+       }
+       for (int i=13;i<15;i++){
+            Position newPosition=new Position("SWEEPSTAKES");
+            
+            this.array1month[i]=newPosition;
+       }
+       for (int i=15;i<18;i++){
+            Position newPosition=new Position("LOTTERY");
+            
+            this.array1month[i]=newPosition;
+       }
+       for (int i=18;i<20;i++){
+            Position newPosition=new Position("RADIO");
+           
+            this.array1month[i]=newPosition;
+       }
+       for (int i=20;i<26;i++){
+            Position newPosition=new Position("BUYER");
+            
+            this.array1month[i]=newPosition;
+       }
+       for (int i=26;i<28;i++){
+            Position newPosition=new Position("FAMILY CASINO NIGHT");
+            
+            this.array1month[i]=newPosition;
+       }
+       for (int i=28;i<30;i++){
+            Position newPosition;
+            newPosition = new Position("YARD SALE");
+            
+            this.array1month[i]=newPosition;
+       }
+      this.array1month[30]=new Position("PAYDAY");
        
+    }
+    public void ShuffleBoard(){
+        Random rnd = ThreadLocalRandom.current();
+    for (int i = this.array1month.length - 2; i > 0; i--)
+    {
+      int index = rnd.nextInt(i + 1);
+      // Simple swap
+      Position a = this.array1month[index];
+      this.array1month[index] =this.array1month[i];
+      this.array1month[i] = a;
+    }
     }
     /**INITIALIZES 48 MAIL CARDS AND 20 DEAL CARDS
      */
@@ -72,6 +139,13 @@ public class controller {
         for (int i=0;i<this.mailCards.size();i++){
             System.out.println(this.mailCards.get(i).type +" "+ this.mailCards.get(i).typeEn +" "+ this.mailCards.get(i).msg +" "+ this.mailCards.get(i).amount +" "+
                     this.mailCards.get(i).choice);
+        }
+    }
+    
+    public void printBoard(){
+        for(int i=0;i<31;i++)
+        {
+            System.out.println(this.array1month[i].getType() + i);
         }
     }
     

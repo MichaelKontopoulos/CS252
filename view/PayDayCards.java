@@ -209,7 +209,10 @@ public class PayDayCards extends JFrame{
          pdv.readFile("resources/mailCards_greeklish.csv","Mail");
          controller newController=new controller(1);
          newController.initialize_Cards(pdv.mailCards,pdv.dealCards);
-         newController.printarraylist();
+         //newController.printarraylist();
+         newController.initialize_Board();
+         newController.ShuffleBoard();
+         newController.printBoard();
          
         
     }
